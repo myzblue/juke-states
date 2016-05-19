@@ -13,3 +13,11 @@ juke.config(function ($stateProvider) {
     controller: "ArtistCtrl"
   });
 });
+
+juke.config(function ($stateProvider) {
+  $stateProvider.state('artist.albums', {
+    url: '/artists/:id/albums',
+    templateUrl: 'js/artist/albumsforArtist.template.html', //start from browser path
+    controller: "ArtistCtrl"
+  });
+});
