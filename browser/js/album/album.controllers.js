@@ -2,17 +2,19 @@
 
 /* ALBUMS (SINGULAR) CONTROLLER */
 
-juke.controller('AlbumCtrl', function ($scope, $log, PlayerFactory, AlbumFactory) {
+juke.controller('AlbumCtrl', function ($scope, $log, PlayerFactory, AlbumFactory, $stateParams) {
 
-  $scope.$on('viewSwap', function (event, data) {
-    if (data.name !== 'oneAlbum') return $scope.showMe = false;
-    $scope.showMe = true;
-    AlbumFactory.fetchById(data.id)
+  // $scope.$on('viewSwap', function (event, data) {
+  //   if (data.name !== 'oneAlbum') return $scope.showMe = false;
+  //   $scope.showMe = true;
+    var data = $stateParams.id;
+
+    AlbumFactory.fetchById(data)
     .then(function (album) {
       $scope.album = album;
     })
     .catch($log.error);
-  });
+  
 
   // main toggle
   $scope.toggle = function (song) {
